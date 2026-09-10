@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Image Processing Lab</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+<header class="topbar">
+  <div class="brand">
+    <div class="brand-mark">IP</div>
+    <div><div class="brand-title">Image Processing Lab</div><div class="brand-sub">Interactive Practical Demonstrator</div></div>
+  </div>
+  <div class="status"><span class="dot"></span> OpenCV Engine Ready</div>
+</header>
+
+<main class="shell">
+  <section class="hero">
+    <div>
+      <div class="eyebrow">IMAGE PROCESSING • 10 PRACTICALS</div>
+      <h1>Explore image processing<br><span>through one workspace.</span></h1>
+      <p>Upload an image, select your practical, tune the parameters, and inspect the processed result with measurable output.</p>
+    </div>
+    <div class="hero-card">
+      <div class="hero-number">10</div>
+      <div><b>complete practical modules</b><small>Transform • Enhance • Filter • Restore • Detect</small></div>
+    </div>
+  </section>
+
+  <section class="workspace">
+    <aside class="sidebar">
+      <div class="side-title">Practicals</div>
+      <button class="pbtn active" data-p="1"><b>01</b><span>Image Operations</span></button>
+      <button class="pbtn" data-p="2"><b>02</b><span>Geometric Transform</span></button>
+      <button class="pbtn" data-p="3"><b>03</b><span>Spatial Enhancement</span></button>
+      <button class="pbtn" data-p="4"><b>04</b><span>Spatial Filters</span></button>
+      <button class="pbtn" data-p="5"><b>05</b><span>Inpainting</span></button>
+      <button class="pbtn" data-p="6"><b>06</b><span>Lossless Compression</span></button>
+      <button class="pbtn" data-p="7"><b>07</b><span>Morphology</span></button>
+      <button class="pbtn" data-p="8"><b>08</b><span>Correlation Detection</span></button>
+      <button class="pbtn" data-p="9"><b>09</b><span>Colour Spaces</span></button>
+      <button class="pbtn" data-p="10"><b>10</b><span>Edge Detection</span></button>
+    </aside>
+
+    <section class="panel">
+      <div class="panel-head">
+        <div>
+          <div class="tag" id="pTag">PRACTICAL 01</div>
+          <h2 id="pTitle">Image Representation & Operations</h2>
+          <p id="pAim">Convert RGB and grayscale images and study arithmetic and bitwise operations.</p>
+        </div>
+        <div class="step">INPUT → PROCESS → OUTPUT</div>
+      </div>
+
+      <form id="form">
+        <input type="hidden" name="practical" id="practical" value="1">
+        <div class="input-card">
+          <div class="input-title"><span>01</span> Input image</div>
+          <label class="dropzone" id="dropzone">
+            <input type="file" name="image" id="image" accept="image/*" required>
+            <div class="upload-icon">↑</div>
+            <b>Drop an image here or browse</b>
+            <small>PNG, JPG, JPEG, BMP or WEBP • Max 12 MB</small>
+            <div class="filename" id="filename"></div>
+          </label>
+        </div>
+
+        <div class="controls-card">
+          <div class="input-title"><span>02</span> Processing controls</div>
+          <div id="controls"></div>
+        </div>
+
+        <div id="extraUpload"></div>
+
+        <button class="run" type="submit"><span>Run Processing</span><span>→</span></button>
+      </form>
+
+      <div class="results" id="results">
+        <div class="result-head"><div><div class="tag">RESULT</div><h3 id="resultTitle">Your processed image will appear here</h3></div><div id="metricBadge"></div></div>
+        <div class="image-grid">
+          <div class="image-box">
+            <div class="image-label"><span>INPUT IMAGE</span><button type="button" class="view-btn" data-view="inputPreview">View full image</button></div>
+            <div class="placeholder" id="inputPreview">Upload an image to begin</div>
+          </div>
+          <div class="arrow">→</div>
+          <div class="image-box">
+            <div class="image-label"><span>PROCESSED OUTPUT</span><button type="button" class="view-btn" data-view="outputPreview">View full image</button></div>
+            <div class="placeholder" id="outputPreview">Run a practical to generate output</div>
+          </div>
+        </div>
+        <div class="result-actions">
+          <button type="button" class="secondary-btn" id="openOutput" disabled>↗ Open output full screen</button>
+          <a class="secondary-btn disabled-link" id="downloadOutput" href="#" download="processed_output.png">↓ Download output</a>
+        </div>
+        <div class="info-grid">
+          <div><span>Input</span><b id="inStats">—</b></div>
+          <div><span>Output</span><b id="outStats">—</b></div>
+          <div class="wide"><span>Observation</span><b id="note">—</b></div>
+        </div>
+      </div>
+    </section>
+  </section>
+</main>
+
+<div class="image-modal" id="imageModal" aria-hidden="true">
+  <div class="modal-backdrop" data-close-modal></div>
+  <div class="modal-card">
+    <div class="modal-head"><b id="modalTitle">Image Preview</b><button type="button" class="modal-close" data-close-modal>×</button></div>
+    <div class="modal-body"><img id="modalImage" alt="Full image preview"></div>
+  </div>
+</div>
+
+<footer>Image Processing Lab <span>•</span> Built with Python, Flask, OpenCV & NumPy</footer>
+<script src="/static/app.js"></script>
+</body>
+</html>
